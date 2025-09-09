@@ -34,7 +34,6 @@ public partial class AppViewModel : ViewModelBase, ISingletonDependency
 				})
 			)
 			.Switch()
-			.ObserveOn(RxApp.MainThreadScheduler)
 			.Subscribe(results =>
 			{
 				_packages.Edit(inner =>
