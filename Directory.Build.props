@@ -1,0 +1,27 @@
+<Project>
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Authors>HMBSbige</Authors>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>-->
+    <EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
+    <!--     <IsAotCompatible>true</IsAotCompatible> -->
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DebugType>embedded</DebugType>
+    <!--    <PublishTrimmed>true</PublishTrimmed>-->
+    <DebuggerSupport Condition="'$(Configuration)' != 'Debug'">false</DebuggerSupport>
+    <PublishSingleFile>true</PublishSingleFile>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <!--    <PublishAot>true</PublishAot>-->
+  </PropertyGroup>
+
+</Project>

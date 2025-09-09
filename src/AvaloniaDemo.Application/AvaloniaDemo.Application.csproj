@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Http" />
+    <PackageReference Include="NuGet.Protocol" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AvaloniaDemo.Application.Contracts\AvaloniaDemo.Application.Contracts.csproj" />
+    <ProjectReference Include="..\AvaloniaDemo.Domain\AvaloniaDemo.Domain.csproj" />
+  </ItemGroup>
+</Project>

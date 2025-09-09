@@ -1,0 +1,6 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.HighPerformance" />
+    <PackageReference Include="Volo.Abp.Core" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,32 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:AvaloniaDemo.ViewModels;assembly=AvaloniaDemo.ViewModels"
+    mc:Ignorable="d"
+    d:DesignWidth="800" d:DesignHeight="100"
+    x:Class="AvaloniaDemo.Views.NugetDetailsView"
+    x:DataType="vm:NugetDetailsViewModel">
+    <Design.DataContext>
+        <vm:NugetDetailsViewModel />
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="Auto,*">
+        <Image x:Name="IconImage"
+               Margin="5"
+               Width="64" Height="64"
+               Source="{Binding Icon^,Mode=OneWay}" />
+        <TextBlock Grid.Column="1"
+                   TextWrapping="WrapWithOverflow"
+                   Margin="5">
+            <Run FontSize="14" FontWeight="SemiBold"
+                 Text="{Binding Title,Mode=OneWay,FallbackValue=''}" />
+            <LineBreak />
+            <Run FontSize="12" x:Name="DescriptionRun" Text="{Binding Description,Mode=OneWay,FallbackValue=''}" />
+            <LineBreak />
+            <HyperlinkButton Padding="0" Command="{Binding OpenPageCommand}">Open</HyperlinkButton>
+        </TextBlock>
+    </Grid>
+
+</UserControl>

@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="NuGet.Config" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src\AvaloniaDemo.Application.Contracts\AvaloniaDemo.Application.Contracts.csproj" />
+    <Project Path="src\AvaloniaDemo.Application\AvaloniaDemo.Application.csproj" />
+    <Project Path="src\AvaloniaDemo.Desktop\AvaloniaDemo.Desktop.csproj" />
+    <Project Path="src\AvaloniaDemo.Domain.Shared\AvaloniaDemo.Domain.Shared.csproj" />
+    <Project Path="src\AvaloniaDemo.Domain\AvaloniaDemo.Domain.csproj" />
+    <Project Path="src\AvaloniaDemo.ViewModels\AvaloniaDemo.ViewModels.csproj" />
+    <Project Path="src\AvaloniaDemo\AvaloniaDemo.csproj" />
+  </Folder>
+</Solution>
