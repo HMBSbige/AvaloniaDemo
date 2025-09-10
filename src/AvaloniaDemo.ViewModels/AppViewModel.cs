@@ -10,6 +10,7 @@ public partial class AppViewModel : ViewModelBase, ISingletonDependency
 	[BindableDerivedList]
 	private readonly ReadOnlyObservableCollection<NugetDetailsViewModel> _searchResults;
 
+	[RequiresUnreferencedCode("WhenAnyValue may reference members that could be trimmed.")]
 	public AppViewModel()
 	{
 		if (Design.IsDesignMode)

@@ -6,22 +6,33 @@
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <ILLinkTreatWarningsAsErrors>false</ILLinkTreatWarningsAsErrors>
     <Authors>HMBSbige</Authors>
   </PropertyGroup>
 
   <PropertyGroup>
-    <!--    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>-->
+    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
     <EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
     <!--     <IsAotCompatible>true</IsAotCompatible> -->
   </PropertyGroup>
 
   <PropertyGroup>
     <DebugType>embedded</DebugType>
-    <!--    <PublishTrimmed>true</PublishTrimmed>-->
-    <DebuggerSupport Condition="'$(Configuration)' != 'Debug'">false</DebuggerSupport>
     <PublishSingleFile>true</PublishSingleFile>
     <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <PublishTrimmed>true</PublishTrimmed>
+    <TrimMode>partial</TrimMode>
     <!--    <PublishAot>true</PublishAot>-->
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
+    <DebuggerSupport>false</DebuggerSupport>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(PublishTrimmed)' == 'true'">
+    <NoWarn>IL2026;IL2104</NoWarn>
   </PropertyGroup>
 
 </Project>

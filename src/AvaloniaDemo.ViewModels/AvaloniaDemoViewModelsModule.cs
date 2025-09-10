@@ -8,6 +8,7 @@ global using ReactiveUI;
 global using ReactiveUI.SourceGenerators;
 global using Splat;
 global using System.Collections.ObjectModel;
+global using System.Diagnostics.CodeAnalysis;
 global using System.Reactive.Disposables;
 global using System.Reactive.Linq;
 global using Volo.Abp.DependencyInjection;

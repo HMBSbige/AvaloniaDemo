@@ -22,6 +22,7 @@ public partial class NugetDetailsViewModel : ViewModelBase, ITransientDependency
 
 	private readonly CompositeDisposable _disposable = new();
 
+	[RequiresUnreferencedCode("WhenAnyValue may reference members that could be trimmed.")]
 	public NugetDetailsViewModel()
 	{
 		if (Design.IsDesignMode)
