@@ -1,0 +1,45 @@
+name: CI
+on:
+  - push
+  - pull_request
+env:
+  ProjectName: ${{ github.event.repository.name }}
+  NET_TFM: net9.0
+  NET_VERSION: 9.0.x
+
+jobs:
+  check_format:
+    name: Check format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: ${{ env.NET_VERSION }}
+      - run: dotnet format -v diag --verify-no-changes
+
+  build:
+    needs: [test]
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+          rid:
+            - win-x64
+            - linux-x64
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: ${{ env.NET_VERSION }}
+
+      - name: Build
+        shell: pwsh
+        working-directory: src/${{ env.ProjectName }}.Desktop
+        run: |
+          dotnet publish -r ${{ matrix.rid }}
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.ProjectName }}
+          path: src\${{ env.ProjectName }}.Desktop\bin\Release\${{ env.NET_TFM }}\${{ matrix.rid }}\publish\
