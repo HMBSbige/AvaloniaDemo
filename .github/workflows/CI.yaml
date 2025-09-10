@@ -19,7 +19,7 @@ jobs:
       - run: dotnet format -v diag --verify-no-changes
 
   build:
-    needs: [test]
+    needs: [check_format]
     runs-on: ubuntu-latest
     strategy:
         matrix:
