@@ -1,5 +1,4 @@
 using Avalonia.Media.Imaging;
-using CommunityToolkit.HighPerformance;
 using System.Diagnostics;
 
 namespace AvaloniaDemo.ViewModels;
@@ -54,11 +53,16 @@ public partial class NugetDetailsViewModel : ViewModelBase, ITransientDependency
 
 	private async Task<Bitmap?> LoadIcon(Uri? url, CancellationToken cancellationToken = default)
 	{
+		if (url is null)
+		{
+			return default;
+		}
+
 		try
 		{
-			ReadOnlyMemory<byte> data = await TransientCachedServiceProvider.GetRequiredService<NugetSearchAppService>().DownloadIconAsync(url, cancellationToken);
+			byte[] data = await TransientCachedServiceProvider.GetRequiredService<NugetSearchAppService>().DownloadIconAsync(url, cancellationToken);
 
-			await using Stream stream = data.AsStream();
+			await using Stream stream = new MemoryStream(data);
 
 			return new Bitmap(stream);
 		}

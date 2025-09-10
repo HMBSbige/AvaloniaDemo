@@ -24,7 +24,7 @@ public class NugetSearchAppService : ApplicationService
 		});
 	}
 
-	public async Task<ReadOnlyMemory<byte>> DownloadIconAsync(Uri? uri, CancellationToken cancellationToken = default)
+	public async Task<byte[]> DownloadIconAsync(Uri? uri, CancellationToken cancellationToken = default)
 	{
 		uri ??= DefaultIconUri;
 
