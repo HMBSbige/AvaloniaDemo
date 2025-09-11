@@ -7,6 +7,10 @@
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(DesignTimeBuild)' != 'true'">
+    <Compile Remove="DesignViewModels\**" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" />
     <PackageReference Include="Avalonia.ReactiveUI" />
