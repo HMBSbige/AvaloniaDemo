@@ -7,7 +7,7 @@
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(DesignTimeBuild)' != 'true'">
+  <ItemGroup Condition="'$(Configuration)' != 'Debug'">
     <Compile Remove="DesignViewModels\**" />
   </ItemGroup>
 
