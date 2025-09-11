@@ -5,12 +5,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:AvaloniaDemo.ViewModels;assembly=AvaloniaDemo.ViewModels"
     xmlns:views="clr-namespace:AvaloniaDemo.Views"
+    xmlns:designViewModels="clr-namespace:AvaloniaDemo.DesignViewModels"
     mc:Ignorable="d"
     d:DesignWidth="800" d:DesignHeight="450"
     x:Class="AvaloniaDemo.Views.MainView"
     x:DataType="vm:AppViewModel">
     <Design.DataContext>
-        <vm:AppViewModel />
+        <designViewModels:DesignAppViewModel />
     </Design.DataContext>
 
     <Grid Margin="5" RowDefinitions="Auto,*">

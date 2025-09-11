@@ -13,18 +13,13 @@ public partial class AppViewModel : ViewModelBase, ISingletonDependency
 	[RequiresUnreferencedCode("WhenAnyValue may reference members that could be trimmed.")]
 	public AppViewModel()
 	{
-		if (Design.IsDesignMode)
-		{
-			TransientCachedServiceProvider = Locator.Current.GetService<ITransientCachedServiceProvider>()!;
-		}
-
 		_packages.Connect()
 			.Bind(out _searchResults)
 			.DisposeMany()
 			.Subscribe();
 
 		this.WhenAnyValue(x => x.SearchTerm)
-			.Throttle(TimeSpan.FromMilliseconds(800))
+			.Throttle(TimeSpan.FromMilliseconds(500))
 			.Select(term => term?.Trim())
 			.DistinctUntilChanged()
 			.Select(s => Observable.FromAsync(cancellationToken => SearchNuGetPackagesAsync(s, cancellationToken))
@@ -63,7 +58,7 @@ public partial class AppViewModel : ViewModelBase, ISingletonDependency
 			NugetDetailsViewModel vm = ServiceProvider.GetRequiredService<NugetDetailsViewModel>();
 			vm.Title = x.Title;
 			vm.Description = x.Description;
-			vm.IconUrl = x.IconUrl;
+			vm.IconUrl = x.IconUrl ?? NugetDetailsViewModel.DefaultIconUri;
 			vm.ProjectUrl = x.ProjectUrl;
 			return vm;
 		});

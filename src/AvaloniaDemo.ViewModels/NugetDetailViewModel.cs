@@ -1,4 +1,3 @@
-using Avalonia.Media.Imaging;
 using System.Diagnostics;
 
 namespace AvaloniaDemo.ViewModels;
@@ -17,25 +16,20 @@ public partial class NugetDetailsViewModel : ViewModelBase, ITransientDependency
 	[Reactive]
 	public partial Uri? ProjectUrl { get; set; }
 
-	[Reactive]
-	public partial Task<Bitmap?> Icon { get; set; }
+	[ObservableAsProperty]
+	public partial byte[]? Icon { get; }
+
+	public static readonly Uri DefaultIconUri = new(@"https://raw.githubusercontent.com/NuGet/Media/main/Images/MainLogo/64x64/nuget_64.png");
 
 	private readonly CompositeDisposable _disposable = new();
 
 	[RequiresUnreferencedCode("WhenAnyValue may reference members that could be trimmed.")]
 	public NugetDetailsViewModel()
 	{
-		if (Design.IsDesignMode)
-		{
-			Title = nameof(Title);
-			Description = nameof(Description);
-		}
-
-		Icon = Task.FromResult<Bitmap?>(default);
-
 		this.WhenAnyValue(x => x.IconUrl)
-			.Select(url => LoadIcon(url))
-			.Subscribe(task => Icon = task)
+			.Select(url => Observable.FromAsync(cancellationToken => LoadIconAsync(url, cancellationToken)))
+			.Switch()
+			.ToProperty(this, x => x.Icon, out _iconHelper)
 			.DisposeWith(_disposable);
 
 		OpenPageCommand.DisposeWith(_disposable);
@@ -52,7 +46,7 @@ public partial class NugetDetailsViewModel : ViewModelBase, ITransientDependency
 		using Process? process = Process.Start(new ProcessStartInfo(ProjectUrl.ToString()) { UseShellExecute = true });
 	}
 
-	private async Task<Bitmap?> LoadIcon(Uri? url, CancellationToken cancellationToken = default)
+	private async Task<byte[]?> LoadIconAsync(Uri? url, CancellationToken cancellationToken = default)
 	{
 		if (url is null)
 		{
@@ -61,11 +55,7 @@ public partial class NugetDetailsViewModel : ViewModelBase, ITransientDependency
 
 		try
 		{
-			byte[] data = await TransientCachedServiceProvider.GetRequiredService<NugetSearchAppService>().DownloadIconAsync(url, cancellationToken);
-
-			await using Stream stream = new MemoryStream(data);
-
-			return new Bitmap(stream);
+			return await TransientCachedServiceProvider.GetRequiredService<NugetSearchAppService>().DownloadIconAsync(url, cancellationToken);
 		}
 		catch
 		{

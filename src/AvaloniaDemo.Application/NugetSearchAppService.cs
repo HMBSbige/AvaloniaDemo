@@ -5,8 +5,6 @@ namespace AvaloniaDemo.Application;
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public class NugetSearchAppService : ApplicationService
 {
-	private static readonly Uri DefaultIconUri = new(@"https://raw.githubusercontent.com/NuGet/Media/main/Images/MainLogo/64x64/nuget_64.png");
-
 	public async Task<IEnumerable<NugetPackageInfoDto>> SearchAsync(NugetSearchRequestDto request, CancellationToken cancellationToken = default)
 	{
 		SourceRepository repository = LazyServiceProvider.GetRequiredService<SourceRepository>();
@@ -26,8 +24,6 @@ public class NugetSearchAppService : ApplicationService
 
 	public async Task<byte[]> DownloadIconAsync(Uri? uri, CancellationToken cancellationToken = default)
 	{
-		uri ??= DefaultIconUri;
-
 		HttpClient httpClient = LazyServiceProvider.GetRequiredService<IHttpClientFactory>().CreateClient();
 
 		return await httpClient.GetByteArrayAsync(uri, cancellationToken);

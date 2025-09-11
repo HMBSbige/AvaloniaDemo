@@ -1,4 +1,3 @@
-global using Avalonia.Controls;
 global using AvaloniaDemo.Application;
 global using AvaloniaDemo.Application.Contracts;
 global using DynamicData;

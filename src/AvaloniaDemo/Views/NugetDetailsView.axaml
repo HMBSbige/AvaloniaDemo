@@ -4,19 +4,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:AvaloniaDemo.ViewModels;assembly=AvaloniaDemo.ViewModels"
+    xmlns:designViewModels="clr-namespace:AvaloniaDemo.DesignViewModels"
     mc:Ignorable="d"
     d:DesignWidth="800" d:DesignHeight="100"
     x:Class="AvaloniaDemo.Views.NugetDetailsView"
     x:DataType="vm:NugetDetailsViewModel">
     <Design.DataContext>
-        <vm:NugetDetailsViewModel />
+        <designViewModels:DesignNugetDetailsViewModel />
     </Design.DataContext>
 
     <Grid ColumnDefinitions="Auto,*">
         <Image x:Name="IconImage"
                Margin="5"
-               Width="64" Height="64"
-               Source="{Binding Icon^,Mode=OneWay}" />
+               Width="64" Height="64" />
         <TextBlock Grid.Column="1"
                    TextWrapping="WrapWithOverflow"
                    Margin="5">
