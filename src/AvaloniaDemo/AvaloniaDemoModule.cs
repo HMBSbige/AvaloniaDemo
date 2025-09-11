@@ -37,8 +37,8 @@ public class AvaloniaDemoModule : AbpModule
 		PlatformRegistrationManager.SetRegistrationNamespaces(RegistrationNamespace.Avalonia);
 		RxApp.MainThreadScheduler = AvaloniaScheduler.Instance;
 
-		context.Services.Replace(new ServiceDescriptor(typeof(IActivationForViewFetcher), typeof(AvaloniaActivationForViewFetcher), ServiceLifetime.Singleton));
-		context.Services.Replace(new ServiceDescriptor(typeof(IPropertyBindingHook), typeof(AutoDataTemplateBindingHook), ServiceLifetime.Singleton));
+		context.Services.AddSingleton<IActivationForViewFetcher, AvaloniaActivationForViewFetcher>();
+		context.Services.AddSingleton<IPropertyBindingHook, AutoDataTemplateBindingHook>();
 
 		#endregion
 	}
