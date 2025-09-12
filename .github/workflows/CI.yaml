@@ -26,6 +26,7 @@ jobs:
           rid:
             - win-x64
             - linux-x64
+            - linux-loongarch64
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-dotnet@v5

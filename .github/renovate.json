@@ -28,5 +28,18 @@
 	],
 	"labels": [
 		"Automatic"
+	],
+	"customManagers": [
+		{
+			"customType": "regex",
+			"managerFilePatterns": [
+				"/(^|/)Directory.Build.props$/"
+			],
+			"matchStrings": [
+				"<RuntimeFrameworkVersion>(?<currentValue>.*?)</RuntimeFrameworkVersion>"
+			],
+			"depNameTemplate": "Microsoft.NETCore.App.Host.linux-loongarch64",
+			"datasourceTemplate": "nuget"
+		}
 	]
 }
