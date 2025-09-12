@@ -16,4 +16,8 @@
     <TrimmerRootAssembly Include="ReactiveUI" />
   </ItemGroup>
 
+  <Target Name="RemoveUnwantedDlls" AfterTargets="Publish">
+    <Delete Files="$(PublishDir)av_libglesv2.dll" />
+  </Target>
+
 </Project>

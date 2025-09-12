@@ -35,8 +35,4 @@
     <NoWarn>IL2026;IL2104</NoWarn>
   </PropertyGroup>
 
-  <Target Name="RemoveUnwantedDlls" AfterTargets="Publish">
-    <Delete Files="$(PublishDir)av_libglesv2.dll" />
-  </Target>
-
 </Project>
