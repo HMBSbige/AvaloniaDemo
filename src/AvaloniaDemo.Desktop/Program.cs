@@ -1,4 +1,5 @@
 using Avalonia;
+using Microsoft.Extensions.DependencyInjection;
 using Splat.Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 
@@ -23,11 +24,22 @@ internal static class Program
 	private static AppBuilder BuildAvaloniaApp()
 	{
 		IAbpApplicationWithInternalServiceProvider application = AbpApplicationFactory.Create<AvaloniaDemoModule>(options => options.UseAutofac());
+		application.Services.AddSingleton(new Win32PlatformOptions
+		{
+			RenderingMode =
+			[
+				Win32RenderingMode.AngleEgl,
+				Win32RenderingMode.Vulkan,
+				Win32RenderingMode.Wgl,
+				Win32RenderingMode.Software
+			]
+		});
 		application.Initialize();
 		application.ServiceProvider.UseMicrosoftDependencyResolver();
 
 		return AppBuilder.Configure<App>()
 			.UsePlatformDetect()
-			.LogToTrace();
+			.LogToTrace()
+			.With(application.ServiceProvider.GetRequiredService<Win32PlatformOptions>());
 	}
 }
