@@ -20,10 +20,15 @@
     <DebugType>embedded</DebugType>
     <PublishSingleFile>true</PublishSingleFile>
     <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <!--    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>-->
     <PublishTrimmed>true</PublishTrimmed>
     <TrimMode>partial</TrimMode>
     <!--    <PublishAot>true</PublishAot>-->
   </PropertyGroup>
+
+  <Target Name="CleanPreviousPublish" BeforeTargets="PrepareForPublish">
+    <RemoveDir Directories="$(PublishDir)" />
+  </Target>
 
   <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
     <DebuggerSupport>false</DebuggerSupport>
