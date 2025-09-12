@@ -2,13 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
-    <RuntimeFrameworkVersion>9.0.4</RuntimeFrameworkVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <ILLinkTreatWarningsAsErrors>false</ILLinkTreatWarningsAsErrors>
     <Authors>HMBSbige</Authors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(RuntimeIdentifier.EndsWith('loongarch64'))">
+    <RuntimeFrameworkVersion>9.0.4</RuntimeFrameworkVersion>
   </PropertyGroup>
 
   <PropertyGroup>
