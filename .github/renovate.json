@@ -29,8 +29,10 @@
 			"matchDatasources": [
 				"nuget"
 			],
+			"matchPackageNames": [
+				"*.linux-loongarch64"
+			],
 			"registryUrls": [
-				"https://api.nuget.org/v3/index.json",
 				"https://nuget.loongnix.cn/v3/index.json"
 			]
 		}
