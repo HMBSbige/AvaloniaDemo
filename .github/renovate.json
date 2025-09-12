@@ -24,33 +24,9 @@
 				"https://github.com/reactiveui/ReactiveUI"
 			],
 			"groupName": "ReactiveUI"
-		},
-		{
-			"matchDatasources": [
-				"nuget"
-			],
-			"matchPackageNames": [
-				"*.linux-loongarch64"
-			],
-			"registryUrls": [
-				"https://nuget.loongnix.cn/v3/index.json"
-			]
 		}
 	],
 	"labels": [
 		"Automatic"
-	],
-	"customManagers": [
-		{
-			"customType": "regex",
-			"managerFilePatterns": [
-				"/(^|/)Directory.Build.props$/"
-			],
-			"matchStrings": [
-				"<RuntimeFrameworkVersion>(?<currentValue>.*?)</RuntimeFrameworkVersion>"
-			],
-			"depNameTemplate": "Microsoft.NETCore.App.Host.linux-loongarch64",
-			"datasourceTemplate": "nuget"
-		}
 	]
 }
