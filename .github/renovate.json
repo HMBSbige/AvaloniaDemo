@@ -24,6 +24,15 @@
 				"https://github.com/reactiveui/ReactiveUI"
 			],
 			"groupName": "ReactiveUI"
+		},
+		{
+			"matchDatasources": [
+				"nuget"
+			],
+			"registryUrls": [
+				"https://api.nuget.org/v3/index.json",
+				"https://nuget.loongnix.cn/v3/index.json"
+			]
 		}
 	],
 	"labels": [
