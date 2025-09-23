@@ -11,7 +11,7 @@
     <PackageVersion Include="NuGet.Protocol" Version="6.14.0" />
     <PackageVersion Include="ReactiveUI" Version="21.0.1" />
     <PackageVersion Include="ReactiveUI.SourceGenerators" Version="2.4.1" />
-    <PackageVersion Include="Splat.Microsoft.Extensions.DependencyInjection" Version="17.0.1" />
+    <PackageVersion Include="Splat.Microsoft.Extensions.DependencyInjection" Version="17.1.1" />
     <PackageVersion Include="Volo.Abp.Core" Version="9.3.4" />
     <PackageVersion Include="Volo.Abp.Autofac" Version="9.3.4" />
     <PackageVersion Include="Volo.Abp.Ddd.Application" Version="9.3.4" />
