@@ -22,6 +22,7 @@
     <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
     <!--    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>-->
     <PublishTrimmed>true</PublishTrimmed>
+    <JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
     <TrimMode>partial</TrimMode>
     <!--    <PublishAot>true</PublishAot>-->
   </PropertyGroup>

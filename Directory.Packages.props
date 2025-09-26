@@ -22,5 +22,6 @@
     <PackageVersion Include="Volo.Abp.Ddd.Application" Version="9.3.4" />
     <PackageVersion Include="Volo.Abp.Ddd.Application.Contracts" Version="9.3.4" />
     <PackageVersion Include="Volo.Abp.Ddd.Domain" Version="9.3.4" />
+    <PackageVersion Include="Volo.Abp.Localization" Version="9.3.4" />
   </ItemGroup>
 </Project>

@@ -27,7 +27,6 @@ public partial class NugetDetailsViewModel : ViewModelBase, ITransientDependency
 
 	private readonly CompositeDisposable _disposable = new();
 
-	[RequiresUnreferencedCode("WhenAnyValue may reference members that could be trimmed.")]
 	public NugetDetailsViewModel()
 	{
 		this.WhenAnyValue(x => x.IconUrl)
@@ -49,8 +48,8 @@ public partial class NugetDetailsViewModel : ViewModelBase, ITransientDependency
 	{
 		ArgumentNullException.ThrowIfNull(ProjectUrl);
 
-		TransientCachedServiceProvider.GetRequiredService<ILogger<NugetDetailsViewModel>>().LogDebug("opening page: {url}", ProjectUrl);
-		this.Log().Debug("opening page: {url}", ProjectUrl);
+		TransientCachedServiceProvider.GetRequiredService<ILogger<NugetDetailsViewModel>>().LogDebug(L["OpenPage"], ProjectUrl);
+		this.Log().Debug(L["OpenPage"], ProjectUrl);
 
 		using Process? process = Process.Start(new ProcessStartInfo(ProjectUrl.ToString()) { UseShellExecute = true });
 	}

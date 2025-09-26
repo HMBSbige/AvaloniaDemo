@@ -17,7 +17,7 @@
     <Grid Margin="5" RowDefinitions="Auto,*">
         <TextBox Grid.Row="0" Margin="5" Text="{Binding SearchTerm}" />
 
-        <ListBox Grid.Row="1" Margin="5" ItemsSource="{Binding SearchResults,Mode=OneWay}">
+        <ListBox Grid.Row="1" Margin="5" ItemsSource="{Binding SearchResults,Mode=OneTime}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <views:NugetDetailsView />

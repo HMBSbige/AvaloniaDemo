@@ -5,5 +5,10 @@ public partial class NugetDetailsView : ReactiveUserControl<NugetDetailsViewMode
 	public NugetDetailsView()
 	{
 		InitializeComponent();
+
+		this.WhenActivated(d =>
+		{
+			OpenProjectWeb.Bind(ContentProperty, new ObservableStringLocalizer(nameof(OpenProjectWeb))).DisposeWith(d);
+		});
 	}
 }
