@@ -1,10 +1,10 @@
-using AvaloniaDemo.Domain.Shared.Localization.Resources.AvaloniaDemo;
+using AvaloniaDemo.Domain.Shared.Localization;
 using Microsoft.Extensions.Localization;
 using System.Globalization;
 using System.Reactive;
 using System.Reactive.Subjects;
 
-namespace AvaloniaDemo;
+namespace AvaloniaDemo.Extensions;
 
 public class ObservableStringLocalizer(string key) : IObservable<string>
 {

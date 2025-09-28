@@ -1,6 +1,6 @@
 global using AvaloniaDemo.Application;
 global using AvaloniaDemo.Application.Contracts;
-global using AvaloniaDemo.Domain.Shared.Localization.Resources.AvaloniaDemo;
+global using AvaloniaDemo.Domain.Shared.Localization;
 global using DynamicData;
 global using JetBrains.Annotations;
 global using Microsoft.Extensions.DependencyInjection;

@@ -3,6 +3,7 @@ global using Avalonia.Controls;
 global using Avalonia.Controls.ApplicationLifetimes;
 global using Avalonia.Markup.Xaml;
 global using Avalonia.ReactiveUI;
+global using AvaloniaDemo.Extensions;
 global using AvaloniaDemo.ViewModels;
 global using AvaloniaDemo.Views;
 global using JetBrains.Annotations;

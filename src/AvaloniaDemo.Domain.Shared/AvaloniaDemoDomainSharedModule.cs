@@ -1,4 +1,4 @@
-global using AvaloniaDemo.Domain.Shared.Localization.Resources.AvaloniaDemo;
+global using AvaloniaDemo.Domain.Shared.Localization;
 global using JetBrains.Annotations;
 global using Volo.Abp.Localization;
 global using Volo.Abp.Modularity;
@@ -20,7 +20,7 @@ public class AvaloniaDemoDomainSharedModule : AbpModule
 
 			options.Resources
 				.Add<AvaloniaDemoResource>("en")
-				.AddVirtualJson("/Localization/Resources/AvaloniaDemo");
+				.AddVirtualJson("/Localization/AvaloniaDemo");
 		});
 	}
 }

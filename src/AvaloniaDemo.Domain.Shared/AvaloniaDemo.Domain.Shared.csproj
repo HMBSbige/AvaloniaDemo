@@ -4,6 +4,6 @@
     <PackageReference Include="Volo.Abp.Localization" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\Resources\AvaloniaDemo\*.json" />
+    <EmbeddedResource Include="Localization\AvaloniaDemo\*.json" />
   </ItemGroup>
 </Project>
