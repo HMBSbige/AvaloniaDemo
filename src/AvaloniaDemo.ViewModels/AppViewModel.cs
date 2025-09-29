@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace AvaloniaDemo.ViewModels;
 
 public partial class AppViewModel : ViewModelBase, ISingletonDependency
@@ -9,6 +11,9 @@ public partial class AppViewModel : ViewModelBase, ISingletonDependency
 
 	[BindableDerivedList]
 	private readonly ReadOnlyObservableCollection<NugetDetailsViewModel> _searchResults;
+
+	[Reactive]
+	public partial string? CurrentCulture { get; set; }
 
 	public AppViewModel()
 	{
@@ -37,6 +42,10 @@ public partial class AppViewModel : ViewModelBase, ISingletonDependency
 					inner.AddRange(results);
 				});
 			});
+
+		Locator.Current.GetService<ObservableCultureService>()?
+			.CultureChanged
+			.Subscribe(_ => CurrentCulture = CultureInfo.CurrentCulture.DisplayName);
 	}
 
 	private async Task<IEnumerable<NugetDetailsViewModel>> SearchNuGetPackagesAsync(string? term, CancellationToken cancellationToken)
@@ -56,10 +65,37 @@ public partial class AppViewModel : ViewModelBase, ISingletonDependency
 		{
 			NugetDetailsViewModel vm = ServiceProvider.GetRequiredService<NugetDetailsViewModel>();
 			vm.Title = x.Title;
-			vm.Description = x.Description;
+			vm.Description = GetDescription(x.Description);
 			vm.IconUrl = x.IconUrl ?? NugetDetailsViewModel.DefaultIconUri;
 			vm.ProjectUrl = x.ProjectUrl;
 			return vm;
 		});
+
+		string? GetDescription(string? description)
+		{
+			if (description.IsNullOrWhiteSpace())
+			{
+				return null;
+			}
+
+			int i = description.IndexOf('\n');
+
+			if (i < 0)
+			{
+				return description;
+			}
+
+			return description.Substring(0, i);
+		}
+	}
+
+	[ReactiveCommand]
+	private void SwitchLanguage()
+	{
+		ObservableCultureService service = TransientCachedServiceProvider.GetRequiredService<ObservableCultureService>();
+
+		CultureInfo en = new("en");
+
+		service.ChangeCulture(Equals(CultureInfo.CurrentCulture, en) ? new CultureInfo("zh-CN") : en);
 	}
 }
