@@ -17,11 +17,11 @@
     <PackageVersion Include="Serilog.Sinks.Debug" Version="3.0.0" />
     <PackageVersion Include="Splat.Microsoft.Extensions.DependencyInjection" Version="17.1.1" />
     <PackageVersion Include="Splat.Serilog" Version="17.1.1" />
-    <PackageVersion Include="Volo.Abp.Core" Version="9.3.4" />
-    <PackageVersion Include="Volo.Abp.Autofac" Version="9.3.4" />
-    <PackageVersion Include="Volo.Abp.Ddd.Application" Version="9.3.4" />
-    <PackageVersion Include="Volo.Abp.Ddd.Application.Contracts" Version="9.3.4" />
-    <PackageVersion Include="Volo.Abp.Ddd.Domain" Version="9.3.4" />
-    <PackageVersion Include="Volo.Abp.Localization" Version="9.3.4" />
+    <PackageVersion Include="Volo.Abp.Core" Version="9.3.5" />
+    <PackageVersion Include="Volo.Abp.Autofac" Version="9.3.5" />
+    <PackageVersion Include="Volo.Abp.Ddd.Application" Version="9.3.5" />
+    <PackageVersion Include="Volo.Abp.Ddd.Application.Contracts" Version="9.3.5" />
+    <PackageVersion Include="Volo.Abp.Ddd.Domain" Version="9.3.5" />
+    <PackageVersion Include="Volo.Abp.Localization" Version="9.3.5" />
   </ItemGroup>
 </Project>
