@@ -16,7 +16,7 @@ global using Serilog.Events;
 global using Splat;
 global using Splat.Microsoft.Extensions.DependencyInjection;
 global using Splat.Serilog;
-global using System.Reactive.Disposables;
+global using System.Reactive.Disposables.Fluent;
 global using Volo.Abp;
 global using Volo.Abp.Autofac;
 global using Volo.Abp.DependencyInjection;
