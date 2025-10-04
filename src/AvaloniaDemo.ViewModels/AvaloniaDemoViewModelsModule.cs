@@ -10,6 +10,7 @@ global using ReactiveUI.SourceGenerators;
 global using Splat;
 global using System.Collections.ObjectModel;
 global using System.Reactive.Disposables;
+global using System.Reactive.Disposables.Fluent;
 global using System.Reactive.Linq;
 global using Volo.Abp.DependencyInjection;
 global using Volo.Abp.Modularity;
