@@ -10,7 +10,7 @@
     <PackageVersion Include="Microsoft.Extensions.Http" Version="9.0.10" />
     <PackageVersion Include="NuGet.Protocol" Version="6.14.0" />
     <PackageVersion Include="ReactiveUI" Version="22.2.1" />
-    <PackageVersion Include="ReactiveUI.SourceGenerators" Version="2.4.1" />
+    <PackageVersion Include="ReactiveUI.SourceGenerators" Version="2.5.1" />
     <PackageVersion Include="Serilog" Version="4.3.0" />
     <PackageVersion Include="Serilog.Extensions.Logging" Version="9.0.2" />
     <PackageVersion Include="Serilog.Sinks.Async" Version="2.1.0" />
