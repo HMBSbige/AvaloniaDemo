@@ -49,7 +49,7 @@ jobs:
           dotnet publish -r ${{ matrix.rid }}
 
       - name: Upload
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ env.ProjectName }}-${{ matrix.rid }}
           path: src/${{ env.ProjectName }}.Desktop/bin/Release/${{ env.NET_TFM }}/${{ matrix.rid }}/publish/
