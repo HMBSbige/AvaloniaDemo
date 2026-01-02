@@ -24,6 +24,12 @@
 				"https://github.com/reactiveui/ReactiveUI"
 			],
 			"groupName": "ReactiveUI"
+		},
+		{
+			"matchSourceUrls": [
+				"https://github.com/reactiveui/splat"
+			],
+			"groupName": "Splat"
 		}
 	],
 	"labels": [
