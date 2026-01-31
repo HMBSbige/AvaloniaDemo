@@ -16,7 +16,7 @@
       "groupName": "abp"
     },
     {
-      "matchSourceUrlPrefixes": ["https://github.com/reactiveui/"],
+      "matchSourceUrls": ["https://github.com/reactiveui/**"],
       "groupName": "ReactiveUI"
     }
   ],
