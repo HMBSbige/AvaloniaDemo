@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using ReactiveUI.Avalonia.Splat;
 using Splat;
 using Volo.Abp;
-using Volo.Abp.Autofac;
 
 namespace AvaloniaDemo.Desktop;
 
