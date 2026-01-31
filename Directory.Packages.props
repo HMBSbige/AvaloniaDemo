@@ -5,18 +5,17 @@
   <ItemGroup>
     <PackageVersion Include="Avalonia.Desktop" Version="11.3.11" />
     <PackageVersion Include="Avalonia.Diagnostics" Version="11.3.11" />
-    <PackageVersion Include="Avalonia.ReactiveUI" Version="11.3.9" />
     <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.3.11" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="10.0.2" />
     <PackageVersion Include="NuGet.Protocol" Version="7.0.1" />
     <PackageVersion Include="ReactiveUI" Version="22.3.1" />
+    <PackageVersion Include="ReactiveUI.Avalonia.Autofac" Version="11.3.8" />
     <PackageVersion Include="ReactiveUI.SourceGenerators" Version="2.6.1" />
     <PackageVersion Include="Serilog" Version="4.3.0" />
     <PackageVersion Include="Serilog.Extensions.Logging" Version="10.0.0" />
     <PackageVersion Include="Serilog.Sinks.Async" Version="2.1.0" />
     <PackageVersion Include="Serilog.Sinks.Debug" Version="3.0.0" />
-    <PackageVersion Include="Splat.Microsoft.Extensions.DependencyInjection" Version="19.2.1" />
-    <PackageVersion Include="Splat.Serilog" Version="19.2.1" />
+    <PackageVersion Include="Splat.Serilog" Version="17.2.1" />
     <PackageVersion Include="Volo.Abp.Core" Version="10.0.2" />
     <PackageVersion Include="Volo.Abp.Autofac" Version="10.0.2" />
     <PackageVersion Include="Volo.Abp.Ddd.Application" Version="10.0.2" />

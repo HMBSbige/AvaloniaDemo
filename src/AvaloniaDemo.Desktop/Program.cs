@@ -1,6 +1,10 @@
+using Autofac.Extensions.DependencyInjection;
 using Avalonia;
-using Splat.Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using ReactiveUI.Avalonia.Splat;
+using Splat;
 using Volo.Abp;
+using Volo.Abp.Autofac;
 
 namespace AvaloniaDemo.Desktop;
 
@@ -22,15 +26,28 @@ internal static class Program
 	/// </summary>
 	private static AppBuilder BuildAvaloniaApp()
 	{
-		IAbpApplicationWithInternalServiceProvider application = AbpApplicationFactory.Create<AvaloniaDemoModule>(options => options.UseAutofac());
-		application.Initialize();
-		application.ServiceProvider.UseMicrosoftDependencyResolver();
+		AppBuilder builder = AppBuilder.Configure<App>()
+			.UsePlatformDetect()
+			.UseReactiveUIWithAutofac
+			(
+				builder =>
+				{
+					ServiceCollection services = new();
 
-		return AppBuilder.Configure<App>()
-				.UsePlatformDetect()
-				.LogToTrace()
-				.With(new Win32PlatformOptions { RenderingMode = [Win32RenderingMode.AngleEgl, Win32RenderingMode.Vulkan, Win32RenderingMode.Wgl, Win32RenderingMode.Software] })
-				.With(new X11PlatformOptions { RenderingMode = [X11RenderingMode.Vulkan, X11RenderingMode.Egl, X11RenderingMode.Glx, X11RenderingMode.Software] })
-			;
+					AbpApplicationFactory.Create<AvaloniaDemoModule>(services);
+
+					builder.Populate(services);
+				},
+				withResolver: resolver =>
+				{
+					IServiceProvider serviceProvider = resolver.GetService<IServiceProvider>()!;
+					resolver.GetService<IAbpApplicationWithExternalServiceProvider>()!.Initialize(serviceProvider);
+				}
+			)
+			.LogToTrace()
+			.With(new Win32PlatformOptions { RenderingMode = [Win32RenderingMode.AngleEgl, Win32RenderingMode.Vulkan, Win32RenderingMode.Wgl, Win32RenderingMode.Software] })
+			.With(new X11PlatformOptions { RenderingMode = [X11RenderingMode.Vulkan, X11RenderingMode.Egl, X11RenderingMode.Glx, X11RenderingMode.Software] });
+
+		return builder;
 	}
 }
