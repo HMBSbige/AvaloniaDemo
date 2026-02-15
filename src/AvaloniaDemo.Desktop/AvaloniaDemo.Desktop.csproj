@@ -16,8 +16,10 @@
     <TrimmerRootAssembly Include="ReactiveUI" />
   </ItemGroup>
 
-  <Target Name="RemoveUnwantedDlls" AfterTargets="Publish">
-    <Delete Files="$(PublishDir)av_libglesv2.dll" />
+  <Target Name="ExcludeXmlDocFromPublish" AfterTargets="ComputeResolvedFilesToPublishList">
+    <ItemGroup>
+      <ResolvedFileToPublish Remove="@(ResolvedFileToPublish)" Condition="'%(ResolvedFileToPublish.RelativePath)' == 'av_libglesv2.dll'" />
+    </ItemGroup>
   </Target>
 
 </Project>
