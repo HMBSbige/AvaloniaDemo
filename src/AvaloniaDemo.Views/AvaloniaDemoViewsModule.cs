@@ -1,9 +1,8 @@
 global using Avalonia.Controls;
 global using Avalonia.Controls.ApplicationLifetimes;
 global using Avalonia.Markup.Xaml;
-global using AvaloniaDemo.Extensions;
 global using AvaloniaDemo.ViewModels;
-global using AvaloniaDemo.Views;
+global using AvaloniaDemo.Views.Extensions;
 global using JetBrains.Annotations;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;
@@ -20,7 +19,7 @@ global using Volo.Abp.Autofac;
 global using Volo.Abp.DependencyInjection;
 global using Volo.Abp.Modularity;
 
-namespace AvaloniaDemo;
+namespace AvaloniaDemo.Views;
 
 [DependsOn
 (
@@ -28,7 +27,7 @@ namespace AvaloniaDemo;
 	typeof(AvaloniaDemoViewModelsModule)
 )]
 [UsedImplicitly]
-public class AvaloniaDemoModule : AbpModule
+public class AvaloniaDemoViewsModule : AbpModule
 {
 	public override void ConfigureServices(ServiceConfigurationContext context)
 	{
@@ -63,10 +62,5 @@ public class AvaloniaDemoModule : AbpModule
 		Locator.CurrentMutable.UseSerilogFullLogger(logger);
 
 		context.Services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(logger, true));
-	}
-
-	public override void OnApplicationShutdown(ApplicationShutdownContext context)
-	{
-		context.ServiceProvider.GetService<ILoggerProvider>()?.Dispose();
 	}
 }

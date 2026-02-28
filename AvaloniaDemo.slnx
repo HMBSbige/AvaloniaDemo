@@ -17,6 +17,6 @@
     <Project Path="src\AvaloniaDemo.Domain.Shared\AvaloniaDemo.Domain.Shared.csproj" />
     <Project Path="src\AvaloniaDemo.Domain\AvaloniaDemo.Domain.csproj" />
     <Project Path="src\AvaloniaDemo.ViewModels\AvaloniaDemo.ViewModels.csproj" />
-    <Project Path="src\AvaloniaDemo\AvaloniaDemo.csproj" />
+    <Project Path="src\AvaloniaDemo.Views\AvaloniaDemo.Views.csproj" />
   </Folder>
 </Solution>

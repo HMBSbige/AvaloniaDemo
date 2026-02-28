@@ -20,7 +20,8 @@ public partial class AppViewModel : ViewModelBase, ISingletonDependency
 		_packages.Connect()
 			.Bind(out _searchResults)
 			.DisposeMany()
-			.Subscribe();
+			.Subscribe()
+			.DisposeWith(Disposables);
 
 		this.WhenAnyValue(x => x.SearchTerm)
 			.Throttle(TimeSpan.FromMilliseconds(500))
@@ -41,11 +42,15 @@ public partial class AppViewModel : ViewModelBase, ISingletonDependency
 					inner.Clear();
 					inner.AddRange(results);
 				});
-			});
+			})
+			.DisposeWith(Disposables);
 
 		Locator.Current.GetService<ObservableCultureService>()?
 			.CultureChanged
-			.Subscribe(_ => CurrentCulture = CultureInfo.CurrentCulture.DisplayName);
+			.Subscribe(_ => CurrentCulture = CultureInfo.CurrentCulture.DisplayName)
+			.DisposeWith(Disposables);
+
+		SwitchLanguageCommand.DisposeWith(Disposables);
 	}
 
 	private async Task<IEnumerable<NugetDetailsViewModel>> SearchNuGetPackagesAsync(string? term, CancellationToken cancellationToken)

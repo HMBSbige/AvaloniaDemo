@@ -1,4 +1,4 @@
-namespace AvaloniaDemo.Extensions;
+namespace AvaloniaDemo.Views.Extensions;
 
 public class ObservableStringLocalizer(string key) : IObservable<string>
 {

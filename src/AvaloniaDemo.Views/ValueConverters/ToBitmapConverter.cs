@@ -2,7 +2,7 @@ using Avalonia.Data.Converters;
 using Avalonia.Media.Imaging;
 using System.Globalization;
 
-namespace AvaloniaDemo.ValueConverters;
+namespace AvaloniaDemo.Views.ValueConverters;
 
 public class ToBitmapConverter : IValueConverter
 {

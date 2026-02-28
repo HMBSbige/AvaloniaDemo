@@ -1,5 +1,6 @@
 using Autofac.Extensions.DependencyInjection;
 using Avalonia;
+using AvaloniaDemo.Views;
 using Microsoft.Extensions.DependencyInjection;
 using ReactiveUI.Avalonia.Splat;
 using Splat;
@@ -33,7 +34,7 @@ internal static class Program
 				{
 					ServiceCollection services = new();
 
-					AbpApplicationFactory.Create<AvaloniaDemoModule>(services);
+					AbpApplicationFactory.Create<AvaloniaDemoViewsModule>(services);
 
 					builder.Populate(services);
 				},

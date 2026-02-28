@@ -5,7 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:AvaloniaDemo.ViewModels;assembly=AvaloniaDemo.ViewModels"
     xmlns:views="clr-namespace:AvaloniaDemo.Views"
-    xmlns:designViewModels="clr-namespace:AvaloniaDemo.DesignViewModels"
+    xmlns:designViewModels="clr-namespace:AvaloniaDemo.Views.DesignViewModels"
     mc:Ignorable="d"
     d:DesignWidth="1280" d:DesignHeight="720"
     x:Class="AvaloniaDemo.Views.MainView"

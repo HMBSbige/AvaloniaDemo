@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace AvaloniaDemo.ViewModels;
 
-public partial class NugetDetailsViewModel : ViewModelBase, ITransientDependency, IDisposable
+public partial class NugetDetailsViewModel : ViewModelBase, ITransientDependency
 {
 	[Reactive]
 	public partial string? Title { get; set; }
@@ -25,22 +25,20 @@ public partial class NugetDetailsViewModel : ViewModelBase, ITransientDependency
 
 	public static readonly Uri DefaultIconUri = new(@"https://raw.githubusercontent.com/NuGet/Media/main/Images/MainLogo/64x64/nuget_64.png");
 
-	private readonly CompositeDisposable _disposable = new();
-
 	public NugetDetailsViewModel()
 	{
 		this.WhenAnyValue(x => x.IconUrl)
 			.Select(url => Observable.FromAsync(cancellationToken => LoadIconAsync(url, cancellationToken)))
 			.Switch()
 			.ToProperty(this, x => x.Icon, out _iconHelper)
-			.DisposeWith(_disposable);
+			.DisposeWith(Disposables);
 
 		this.WhenAnyValue(x => x.ProjectUrl)
 			.Select(url => url is not null && url.Scheme == Uri.UriSchemeHttps)
 			.ToProperty(this, x => x.IsUrlAvailable, out _isUrlAvailableHelper)
-			.DisposeWith(_disposable);
+			.DisposeWith(Disposables);
 
-		OpenPageCommand.DisposeWith(_disposable);
+		OpenPageCommand.DisposeWith(Disposables);
 	}
 
 	[ReactiveCommand(OutputScheduler = nameof(RxApp.TaskpoolScheduler))]
@@ -69,11 +67,5 @@ public partial class NugetDetailsViewModel : ViewModelBase, ITransientDependency
 		{
 			return default;
 		}
-	}
-
-	public void Dispose()
-	{
-		_disposable.Dispose();
-		GC.SuppressFinalize(this);
 	}
 }

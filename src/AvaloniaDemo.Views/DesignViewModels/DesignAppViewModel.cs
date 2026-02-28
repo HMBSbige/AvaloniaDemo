@@ -1,4 +1,4 @@
-namespace AvaloniaDemo.DesignViewModels;
+namespace AvaloniaDemo.Views.DesignViewModels;
 
 public class DesignAppViewModel : AppViewModel
 {

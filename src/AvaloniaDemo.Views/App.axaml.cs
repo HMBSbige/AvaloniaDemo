@@ -1,4 +1,4 @@
-namespace AvaloniaDemo;
+namespace AvaloniaDemo.Views;
 
 public class App : Avalonia.Application
 {
@@ -13,7 +13,11 @@ public class App : Avalonia.Application
 
 		if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
 		{
-			desktop.Exit += (sender, e) => serviceProvider.GetRequiredService<IAbpApplication>().Shutdown();
+			desktop.Exit += (_, _) =>
+			{
+				using IAbpApplication app = serviceProvider.GetRequiredService<IAbpApplication>();
+				app.Shutdown();
+			};
 			desktop.MainWindow = serviceProvider.GetRequiredService<MainWindow>();
 		}
 		else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
