@@ -19,7 +19,8 @@
       "matchSourceUrls": [
         "https://github.com/reactiveui/**"
       ],
-      "groupName": "ReactiveUI"
+      "groupName": "ReactiveUI",
+      "separateMajorMinor": false
     },
     {
       "matchDatasources": [
