@@ -1,24 +1,52 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "assignees": ["HMBSbige"],
-  "dependencyDashboard": false,
+  "assignees": [
+    "HMBSbige"
+  ],
   "extends": [
     "config:recommended",
     ":configMigration",
-    ":automergeBranch",
-    ":automergeDigest",
-    ":automergeMinor",
     ":disableRateLimiting"
   ],
   "packageRules": [
     {
-      "matchSourceUrls": ["https://github.com/abpframework/abp"],
+      "matchSourceUrls": [
+        "https://github.com/abpframework/abp"
+      ],
       "groupName": "abp"
     },
     {
-      "matchSourceUrls": ["https://github.com/reactiveui/**"],
+      "matchSourceUrls": [
+        "https://github.com/reactiveui/**"
+      ],
       "groupName": "ReactiveUI"
+    },
+    {
+      "matchDatasources": [
+        "nuget"
+      ],
+      "matchPackageNames": [
+        "*.linux-loongarch64"
+      ],
+      "registryUrls": [
+        "https://lnuget.loongnix.cn/v3/index.json"
+      ]
     }
   ],
-  "labels": ["Automatic"]
+  "labels": [
+    "Automatic"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)Directory.Build.props$/"
+      ],
+      "matchStrings": [
+        "<RuntimeFrameworkVersion>(?<currentValue>.*?)</RuntimeFrameworkVersion>"
+      ],
+      "depNameTemplate": "Microsoft.NETCore.App.Host.linux-loongarch64",
+      "datasourceTemplate": "nuget"
+    }
+  ]
 }

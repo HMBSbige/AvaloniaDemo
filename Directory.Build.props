@@ -10,6 +10,10 @@
     <Authors>HMBSbige</Authors>
   </PropertyGroup>
 
+  <PropertyGroup Condition="$(RuntimeIdentifier.EndsWith('loongarch64'))">
+    <RuntimeFrameworkVersion>10.0.3</RuntimeFrameworkVersion>
+  </PropertyGroup>
+
   <PropertyGroup>
     <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
     <EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
