@@ -1,4 +1,4 @@
-namespace AvaloniaDemo.Views;
+namespace AvaloniaDemo.Views.Views;
 
 public partial class MainView : ReactiveUserControl<AppViewModel>, ISingletonDependency
 {

@@ -3,7 +3,6 @@ using Avalonia;
 using AvaloniaDemo.Views;
 using Microsoft.Extensions.DependencyInjection;
 using ReactiveUI.Avalonia.Splat;
-using Splat;
 using Volo.Abp;
 
 namespace AvaloniaDemo.Desktop;
