@@ -41,7 +41,7 @@ public partial class NugetDetailsViewModel : ViewModelBase, ITransientDependency
 		OpenPageCommand.DisposeWith(Disposables);
 	}
 
-	[ReactiveCommand(OutputScheduler = nameof(RxApp.TaskpoolScheduler))]
+	[ReactiveCommand(OutputScheduler = nameof(RxSchedulers.TaskpoolScheduler))]
 	private void OpenPage()
 	{
 		ArgumentNullException.ThrowIfNull(ProjectUrl);
