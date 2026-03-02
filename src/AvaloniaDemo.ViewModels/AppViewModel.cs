@@ -45,7 +45,7 @@ public partial class AppViewModel : ViewModelBase, ISingletonDependency
 			})
 			.DisposeWith(Disposables);
 
-		Locator.Current.GetService<ObservableCultureService>()?
+		AppLocator.Current.GetService<ObservableCultureService>()?
 			.CultureChanged
 			.Subscribe(_ => CurrentCulture = CultureInfo.CurrentCulture.DisplayName)
 			.DisposeWith(Disposables);

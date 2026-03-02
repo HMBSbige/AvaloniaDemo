@@ -9,7 +9,7 @@ public class DesignNugetDetailsViewModel : NugetDetailsViewModel
 			throw new InvalidOperationException();
 		}
 
-		TransientCachedServiceProvider = Locator.Current.GetService<ITransientCachedServiceProvider>()!;
+		TransientCachedServiceProvider = AppLocator.Current.GetService<ITransientCachedServiceProvider>()!;
 
 		Title = nameof(Title);
 		Description = nameof(Description);
