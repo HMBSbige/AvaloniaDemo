@@ -11,13 +11,17 @@ public class App : Avalonia.Application
 	{
 		IServiceProvider serviceProvider = AppLocator.Current.GetService<IServiceProvider>()!;
 
-		if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+		if (ApplicationLifetime is IControlledApplicationLifetime lifetime)
 		{
-			desktop.Exit += (_, _) =>
+			lifetime.Exit += (_, _) =>
 			{
 				using IAbpApplication app = serviceProvider.GetRequiredService<IAbpApplication>();
 				app.Shutdown();
 			};
+		}
+
+		if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+		{
 			desktop.MainWindow = serviceProvider.GetRequiredService<MainWindow>();
 		}
 		else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
