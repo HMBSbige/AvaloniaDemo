@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="$(RuntimeIdentifier.EndsWith('loongarch64'))">
-    <RuntimeFrameworkVersion>10.0.3</RuntimeFrameworkVersion>
+    <RuntimeFrameworkVersion>10.0.4</RuntimeFrameworkVersion>
   </PropertyGroup>
 
   <PropertyGroup>
