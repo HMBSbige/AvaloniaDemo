@@ -6,7 +6,7 @@
   "extends": [
     "config:recommended",
     ":configMigration",
-    ":disableRateLimiting"
+    "schedule:monthly"
   ],
   "packageRules": [
     {
