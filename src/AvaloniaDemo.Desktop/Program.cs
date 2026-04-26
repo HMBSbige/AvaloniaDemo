@@ -1,9 +1,6 @@
-using Autofac.Extensions.DependencyInjection;
 using Avalonia;
 using AvaloniaDemo.Views;
-using Microsoft.Extensions.DependencyInjection;
-using ReactiveUI.Avalonia.Splat;
-using Volo.Abp;
+using AvaloniaDemo.Views.Infrastructure;
 
 namespace AvaloniaDemo.Desktop;
 
@@ -25,28 +22,11 @@ internal static class Program
 	/// </summary>
 	private static AppBuilder BuildAvaloniaApp()
 	{
-		AppBuilder builder = AppBuilder.Configure<App>()
+		return AppBuilder.Configure<App>()
 			.UsePlatformDetect()
-			.UseReactiveUIWithAutofac
-			(
-				builder =>
-				{
-					ServiceCollection services = new();
-
-					AbpApplicationFactory.Create<AvaloniaDemoViewsModule>(services);
-
-					builder.Populate(services);
-				},
-				withResolver: resolver =>
-				{
-					IServiceProvider serviceProvider = resolver.GetService<IServiceProvider>()!;
-					resolver.GetService<IAbpApplicationWithExternalServiceProvider>()!.Initialize(serviceProvider);
-				}
-			)
+			.UseAvaloniaDemoApp()
 			.LogToTrace()
 			.With(new Win32PlatformOptions { RenderingMode = [Win32RenderingMode.AngleEgl, Win32RenderingMode.Vulkan, Win32RenderingMode.Wgl, Win32RenderingMode.Software] })
 			.With(new X11PlatformOptions { RenderingMode = [X11RenderingMode.Vulkan, X11RenderingMode.Egl, X11RenderingMode.Glx, X11RenderingMode.Software] });
-
-		return builder;
 	}
 }

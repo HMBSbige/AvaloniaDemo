@@ -30,7 +30,10 @@
             <LineBreak />
             <Run FontSize="12" x:Name="DescriptionRun" Text="{Binding Description,Mode=OneWay,FallbackValue=''}" />
             <LineBreak />
-            <HyperlinkButton x:Name="OpenProjectWeb" Padding="0" Command="{Binding OpenPageCommand}" IsVisible="{Binding IsUrlAvailable}" />
+            <HyperlinkButton x:Name="OpenProjectWeb"
+                             Padding="0"
+                             NavigateUri="{Binding ProjectUrl}"
+                             IsVisible="{Binding ProjectUrl, Converter={x:Static ObjectConverters.IsNotNull}}" />
         </TextBlock>
     </Grid>
 

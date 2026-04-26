@@ -1,6 +1,3 @@
-using Microsoft.Extensions.Logging;
-using System.Diagnostics;
-
 namespace AvaloniaDemo.ViewModels;
 
 public partial class NugetDetailsViewModel : ViewModelBase, ITransientDependency
@@ -20,9 +17,6 @@ public partial class NugetDetailsViewModel : ViewModelBase, ITransientDependency
 	[ObservableAsProperty]
 	public partial byte[]? Icon { get; }
 
-	[ObservableAsProperty]
-	public partial bool IsUrlAvailable { get; }
-
 	public static readonly Uri DefaultIconUri = new(@"https://raw.githubusercontent.com/NuGet/Media/main/Images/MainLogo/64x64/nuget_64.png");
 
 	public NugetDetailsViewModel()
@@ -32,24 +26,6 @@ public partial class NugetDetailsViewModel : ViewModelBase, ITransientDependency
 			.Switch()
 			.ToProperty(this, x => x.Icon, out _iconHelper)
 			.DisposeWith(Disposables);
-
-		this.WhenAnyValue(x => x.ProjectUrl)
-			.Select(url => url is not null && url.Scheme == Uri.UriSchemeHttps)
-			.ToProperty(this, x => x.IsUrlAvailable, out _isUrlAvailableHelper)
-			.DisposeWith(Disposables);
-
-		OpenPageCommand.DisposeWith(Disposables);
-	}
-
-	[ReactiveCommand(OutputScheduler = nameof(RxSchedulers.TaskpoolScheduler))]
-	private void OpenPage()
-	{
-		ArgumentNullException.ThrowIfNull(ProjectUrl);
-
-		TransientCachedServiceProvider.GetRequiredService<ILogger<NugetDetailsViewModel>>().LogDebug(L["OpenPage"], ProjectUrl);
-		this.Log().Debug(L["OpenPage"], ProjectUrl);
-
-		using Process? process = Process.Start(new ProcessStartInfo(ProjectUrl.ToString()) { UseShellExecute = true });
 	}
 
 	private async Task<byte[]?> LoadIconAsync(Uri? url, CancellationToken cancellationToken = default)
