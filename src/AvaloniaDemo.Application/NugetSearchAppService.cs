@@ -16,13 +16,29 @@ public class NugetSearchAppService : ApplicationService
 		return metadata.Select(x => new NugetPackageInfoDto
 		{
 			Title = x.Title,
-			Description = x.Description,
+			Description = GetDisplayDescription(x),
 			IconUrl = x.IconUrl,
 			ProjectUrl = x.ProjectUrl
 		});
 	}
 
-	public async Task<byte[]> DownloadIconAsync(Uri? uri, CancellationToken cancellationToken = default)
+	private static string? GetDisplayDescription(IPackageSearchMetadata metadata)
+	{
+		string? description = string.IsNullOrWhiteSpace(metadata.Summary) ? metadata.Description : metadata.Summary;
+
+		if (string.IsNullOrWhiteSpace(description))
+		{
+			return null;
+		}
+
+		description = description.Trim();
+
+		int lineBreakIndex = description.AsSpan().IndexOfAny('\r', '\n');
+
+		return lineBreakIndex < 0 ? description : description.Substring(0, lineBreakIndex);
+	}
+
+	public async Task<byte[]> DownloadIconAsync(Uri uri, CancellationToken cancellationToken = default)
 	{
 		HttpClient httpClient = LazyServiceProvider.GetRequiredService<IHttpClientFactory>().CreateClient();
 

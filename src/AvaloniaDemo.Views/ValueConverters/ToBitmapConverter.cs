@@ -6,6 +6,8 @@ namespace AvaloniaDemo.Views.ValueConverters;
 
 public class ToBitmapConverter : IValueConverter
 {
+	private const int IconWidth = 64;
+
 	public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
 	{
 		try
@@ -13,7 +15,7 @@ public class ToBitmapConverter : IValueConverter
 			if (value is byte[] { Length: > 0 } bytes)
 			{
 				using MemoryStream ms = new(bytes);
-				return new Bitmap(ms);
+				return Bitmap.DecodeToWidth(ms, IconWidth);
 			}
 
 			return null;

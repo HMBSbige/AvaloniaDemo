@@ -70,28 +70,11 @@ public partial class AppViewModel : ViewModelBase, ISingletonDependency
 		{
 			NugetDetailsViewModel vm = ServiceProvider.GetRequiredService<NugetDetailsViewModel>();
 			vm.Title = x.Title;
-			vm.Description = GetDescription(x.Description);
+			vm.Description = x.Description;
 			vm.IconUrl = x.IconUrl ?? NugetDetailsViewModel.DefaultIconUri;
 			vm.ProjectUrl = x.ProjectUrl;
 			return vm;
 		});
-
-		string? GetDescription(string? description)
-		{
-			if (description.IsNullOrWhiteSpace())
-			{
-				return null;
-			}
-
-			int i = description.IndexOf('\n');
-
-			if (i < 0)
-			{
-				return description;
-			}
-
-			return description.Substring(0, i);
-		}
 	}
 
 	[ReactiveCommand]
