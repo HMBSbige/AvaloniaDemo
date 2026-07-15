@@ -12,8 +12,8 @@ public partial class AppViewModel : ViewModelBase, ISingletonDependency
 	[BindableDerivedList]
 	private readonly ReadOnlyObservableCollection<NugetDetailsViewModel> _searchResults;
 
-	[Reactive]
-	public partial string? CurrentCulture { get; set; }
+	[ObservableAsProperty]
+	public partial string? CurrentCulture { get; }
 
 	public AppViewModel()
 	{
@@ -45,9 +45,12 @@ public partial class AppViewModel : ViewModelBase, ISingletonDependency
 			})
 			.DisposeWith(Disposables);
 
-		AppLocator.Current.GetService<ObservableCultureService>()?
-			.CultureChanged
-			.Subscribe(_ => CurrentCulture = CultureInfo.CurrentCulture.DisplayName)
+		ObservableCultureService cultureService = AppLocator.Current.GetService<ObservableCultureService>()
+			?? throw new InvalidOperationException("ObservableCultureService is not registered.");
+
+		cultureService.CultureChanged
+			.Select(_ => CultureInfo.CurrentCulture.DisplayName)
+			.ToProperty(this, x => x.CurrentCulture, out _currentCultureHelper)
 			.DisposeWith(Disposables);
 
 		SwitchLanguageCommand.DisposeWith(Disposables);
@@ -61,7 +64,6 @@ public partial class AppViewModel : ViewModelBase, ISingletonDependency
 			new NugetSearchRequestDto
 			{
 				SearchTerm = term,
-				SkipCount = 0,
 				MaxResultCount = 10
 			},
 			cancellationToken);

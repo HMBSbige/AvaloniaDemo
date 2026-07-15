@@ -38,10 +38,10 @@ public class NugetSearchAppService : ApplicationService
 		return lineBreakIndex < 0 ? description : description.Substring(0, lineBreakIndex);
 	}
 
-	public async Task<byte[]> DownloadIconAsync(Uri uri, CancellationToken cancellationToken = default)
+	public Task<byte[]> DownloadIconAsync(Uri uri, CancellationToken cancellationToken = default)
 	{
 		HttpClient httpClient = LazyServiceProvider.GetRequiredService<IHttpClientFactory>().CreateClient();
 
-		return await httpClient.GetByteArrayAsync(uri, cancellationToken);
+		return httpClient.GetByteArrayAsync(uri, cancellationToken);
 	}
 }

@@ -14,7 +14,7 @@ public static class AppBuilderExtensions
 			{
 				ServiceCollection services = new();
 
-				AbpApplicationFactory.Create<AvaloniaDemoViewsModule>(services);
+				services.AddApplication<AvaloniaDemoViewsModule>();
 
 				containerBuilder.Populate(services);
 			},

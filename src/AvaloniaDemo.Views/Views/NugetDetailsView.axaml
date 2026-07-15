@@ -14,17 +14,17 @@
         <designViewModels:DesignNugetDetailsViewModel />
     </Design.DataContext>
     <Grid ColumnDefinitions="Auto,*">
-        <Image x:Name="IconImage"
+        <Image
                Margin="5"
                Width="64" Height="64"
-               Source="{Binding Icon,Mode=OneWay,Converter={x:Static valueConverters:BitmapConverters.ToBitmap}}" />
+               Source="{Binding Icon,Converter={x:Static valueConverters:BitmapConverters.ToBitmap}}" />
         <TextBlock Grid.Column="1"
                    TextWrapping="WrapWithOverflow"
                    Margin="5">
             <Run FontSize="14" FontWeight="SemiBold"
                  Text="{Binding Title,Mode=OneWay,FallbackValue=''}" />
             <LineBreak />
-            <Run FontSize="12" x:Name="DescriptionRun" Text="{Binding Description,Mode=OneWay,FallbackValue=''}" />
+            <Run FontSize="12" Text="{Binding Description,Mode=OneWay,FallbackValue=''}" />
             <LineBreak />
             <HyperlinkButton x:Name="OpenProjectWeb"
                              Padding="0"
