@@ -30,6 +30,7 @@ jobs:
     needs: [check_format]
     runs-on: ubuntu-latest
     strategy:
+        fail-fast: false
         matrix:
           rid:
             - win-x64
@@ -44,7 +45,6 @@ jobs:
           dotnet-version: ${{ env.NET_VERSION }}
 
       - name: Build
-        shell: pwsh
         working-directory: src/${{ env.ProjectName }}.Desktop
         run: |
           dotnet publish -r ${{ matrix.rid }}
